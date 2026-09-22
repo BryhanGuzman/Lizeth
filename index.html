@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Liz: Flores Amarillas ✨🌻</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="relative min-h-screen flex flex-col justify-between items-center px-4 py-6 md:py-10 select-none">
+
+    <!-- Background Canvas Layers -->
+    <canvas id="petals-canvas"></canvas>
+    <canvas id="flowers-canvas"></canvas>
+    <canvas id="sparkles-canvas"></canvas>
+
+    <!-- MAIN HERO CONTENT -->
+    <main class="w-full max-w-2xl z-10 my-auto text-center flex flex-col items-center">
+        
+        <!-- Header Title Section -->
+        <div class="mb-6 float-animation">
+            <span class="px-4 py-1.5 rounded-full bg-amber-200/60 text-amber-900 text-xs md:text-sm font-medium tracking-wide border border-amber-300/50 mb-3 inline-block shadow-sm">
+                ✨ 21 de Septiembre ✨
+            </span>
+            <h1 class="text-4xl md:text-6xl font-serif-title font-extrabold text-amber-950 tracking-tight leading-tight mt-1">
+                Flores Amarillas <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600">Para Alguien Muy Especial</span>
+            </h1>
+            <p class="text-amber-800/80 text-sm md:text-base mt-2 max-w-md mx-auto">
+                Las flores amarillas significan amor, alegría y la promesa de permanecer siempre juntos.
+            </p>
+        </div>
+
+        <!-- Interactive Centerpiece Card -->
+        <div class="glass-card rounded-3xl p-6 md:p-8 w-full glow-effect relative overflow-hidden my-4">
+            <!-- Decorative corner elements -->
+            <div class="absolute -top-6 -left-6 w-16 h-16 bg-amber-300/30 rounded-full blur-xl"></div>
+            <div class="absolute -bottom-6 -right-6 w-20 h-20 bg-yellow-400/30 rounded-full blur-xl"></div>
+
+            <div class="relative z-10 flex flex-col items-center">
+                <!-- SVG Animated Flower Icon representation -->
+                <div class="w-24 h-24 md:w-32 md:h-32 mb-4 cursor-pointer transform transition duration-500 hover:scale-110" id="center-flower-btn" title="¡Haz clic en la flor!">
+                    <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-md">
+                        <!-- Stem & Leaves -->
+                        <path d="M50 50 Q48 75 50 95" stroke="#15803d" stroke-width="4" fill="none" stroke-linecap="round"/>
+                        <path d="M50 75 Q35 70 30 60 Q42 65 50 75" fill="#22c55e"/>
+                        <path d="M50 70 Q65 65 70 55 Q58 60 50 70" fill="#16a34a"/>
+                        <!-- Petals -->
+                        <g class="animate-[spin_20s_linear_infinite]" style="transform-origin: 50px 45px;">
+                            <ellipse cx="50" cy="25" rx="7" ry="18" fill="#facc15"/>
+                            <ellipse cx="50" cy="25" rx="7" ry="18" fill="#f59e0b" transform="rotate(30 50 45)"/>
+                            <ellipse cx="50" cy="25" rx="7" ry="18" fill="#facc15" transform="rotate(60 50 45)"/>
+                            <ellipse cx="50" cy="25" rx="7" ry="18" fill="#f59e0b" transform="rotate(90 50 45)"/>
+                            <ellipse cx="50" cy="25" rx="7" ry="18" fill="#facc15" transform="rotate(120 50 45)"/>
+                            <ellipse cx="50" cy="25" rx="7" ry="18" fill="#f59e0b" transform="rotate(150 50 45)"/>
+                            <ellipse cx="50" cy="25" rx="7" ry="18" fill="#facc15" transform="rotate(180 50 45)"/>
+                            <ellipse cx="50" cy="25" rx="7" ry="18" fill="#f59e0b" transform="rotate(210 50 45)"/>
+                            <ellipse cx="50" cy="25" rx="7" ry="18" fill="#facc15" transform="rotate(240 50 45)"/>
+                            <ellipse cx="50" cy="25" rx="7" ry="18" fill="#f59e0b" transform="rotate(270 50 45)"/>
+                            <ellipse cx="50" cy="25" rx="7" ry="18" fill="#facc15" transform="rotate(300 50 45)"/>
+                            <ellipse cx="50" cy="25" rx="7" ry="18" fill="#f59e0b" transform="rotate(330 50 45)"/>
+                        </g>
+                        <!-- Center -->
+                        <circle cx="50" cy="45" r="12" fill="#78350f"/>
+                        <circle cx="50" cy="45" r="10" fill="#92400e" stroke="#b45309" stroke-width="1"/>
+                    </svg>
+                </div>
+
+                <!-- Main Message -->
+                <div class="space-y-3 max-w-lg">
+                    <p class="font-handwriting text-2xl md:text-3xl text-amber-900 font-bold">
+                        "Para: Licenciada Lizeth"
+                    </p>
+                    <p class="text-amber-900/90 text-sm md:text-base leading-relaxed italic">
+                        «Te regalo estas flores amarillas no solo para seguir una tradición, sino para recordarte que tu presencia ilumina mis días exactamente como lo hace el sol.»
+                    </p>
+                </div>
+
+                <!-- Action Button -->
+                <div class="mt-8 flex justify-center w-full">
+                    <button id="reveal-btn" class="btn-magic text-white font-semibold px-8 py-3.5 rounded-2xl flex items-center justify-center gap-2 text-sm tracking-wide">
+                        <i class="fas fa-envelope-open-text text-yellow-200"></i>
+                        <span>Abrir Carta Especial</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hint Footer instruction -->
+        <p class="text-amber-800/60 text-xs mt-3">
+            💡 <span class="hidden md:inline">Toca el fondo para hacer florecer el jardín mágico.</span>
+        </p>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="z-10 text-center py-4 text-xs text-amber-800/60 w-full">
+        <p>• Flores Amarillas para la eternidad •</p>
+    </footer>
+
+    <!-- MODAL: Carta / Dedicatoria Oculta -->
+    <div id="letter-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-amber-950/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="glass-card bg-white/90 rounded-3xl p-6 md:p-8 max-w-md w-full relative shadow-2xl border-2 border-amber-300 transform scale-95 transition-all duration-300" id="letter-card">
+            
+            <button id="close-modal-btn" class="absolute top-4 right-4 text-amber-800/60 hover:text-amber-900 bg-amber-100 hover:bg-amber-200 rounded-full w-8 h-8 flex items-center justify-center transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="text-center space-y-4">
+                <div class="inline-block p-3 bg-amber-100 rounded-full text-amber-600 text-2xl mb-1">
+                    🌻
+                </div>
+                <h3 class="text-2xl font-serif-title font-bold text-amber-950">Una Promesa Amarilla</h3>
+                
+                <div class="w-12 h-0.5 bg-amber-400 mx-auto rounded-full"></div>
+
+                <div class="text-left text-amber-900/90 text-sm space-y-3 font-serif leading-relaxed max-h-60 overflow-y-auto pr-1">
+                    <p>
+                        Dicen que regalar flores amarillas el 21 de septiembre representa el cariño hacia una persona muy especial y tu eres esa persona para mi.
+                    </p>
+                    <p>
+                        Hoy te doy este jardín de flores que nunca se marchitan. Cada pétalo flotando lleva un deseo de felicidad, paz y cariño constante para ti.
+                    </p>
+                    <p class="font-handwriting text-xl text-amber-800 font-bold text-right pt-2">
+                        Con todo mi cariño ❤️
+                    </p>
+                </div>
+
+                <button id="gift-flower-btn" class="w-full btn-magic text-white font-semibold py-3 rounded-xl shadow-md text-sm mt-4 flex items-center justify-center gap-2">
+                    <i class="fas fa-sparkles text-yellow-200"></i>
+                    <span>¡Hacer Florecer un Girasol Extra!</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Canvas Setup
+        const petalsCanvas = document.getElementById('petals-canvas');
+        const flowersCanvas = document.getElementById('flowers-canvas');
+        const sparklesCanvas = document.getElementById('sparkles-canvas');
+
+        const ctxPetals = petalsCanvas.getContext('2d');
+        const ctxFlowers = flowersCanvas.getContext('2d');
+        const ctxSparkles = sparklesCanvas.getContext('2d');
+
+        let width, height;
+
+        function resizeCanvases() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+
+            petalsCanvas.width = width;
+            petalsCanvas.height = height;
+            flowersCanvas.width = width;
+            flowersCanvas.height = height;
+            sparklesCanvas.width = width;
+            sparklesCanvas.height = height;
+        }
+
+        window.addEventListener('resize', resizeCanvases);
+        resizeCanvases();
+
+        /* --- FALLING PETALS SYSTEM --- */
+        class Petal {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = -20;
+                this.size = Math.random() * 8 + 6;
+                this.speedY = Math.random() * 1.5 + 0.8;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.angle = Math.random() * Math.PI * 2;
+                this.spin = Math.random() * 0.04 - 0.02;
+                this.color = Math.random() > 0.3 ? '#facc15' : '#f59e0b';
+                this.opacity = Math.random() * 0.6 + 0.4;
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += Math.sin(this.y * 0.01) + this.speedX;
+                this.angle += this.spin;
+
+                if (this.y > height + 20) {
+                    this.reset();
+                }
+            }
+
+            draw(ctx) {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.quadraticCurveTo(this.size, -this.size / 2, this.size, -this.size);
+                ctx.quadraticCurveTo(0, -this.size * 1.5, -this.size, -this.size);
+                ctx.quadraticCurveTo(-this.size, -this.size / 2, 0, 0);
+                ctx.fill();
+
+                ctx.restore();
+            }
+        }
+
+        const petals = Array.from({ length: 45 }, () => new Petal());
+
+        /* --- INTERACTIVE BLOOMING FLOWERS --- */
+        class InteractiveFlower {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.maxPetals = 12;
+                this.currentRadius = 0;
+                this.targetRadius = Math.random() * 20 + 25;
+                this.growthSpeed = Math.random() * 0.8 + 0.5;
+                this.petalColor = Math.random() > 0.5 ? '#facc15' : '#fbbf24';
+                this.centerColor = '#78350f';
+            }
+
+            update() {
+                if (this.currentRadius < this.targetRadius) {
+                    this.currentRadius += this.growthSpeed;
+                }
+            }
+
+            draw(ctx) {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+
+                // Stem
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.quadraticCurveTo(5, 40, 0, 80);
+                ctx.strokeStyle = '#16a34a';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+
+                // Petals
+                const petalCount = 12;
+                for (let i = 0; i < petalCount; i++) {
+                    const angle = (i * Math.PI * 2) / petalCount;
+                    ctx.save();
+                    ctx.rotate(angle);
+                    ctx.fillStyle = this.petalColor;
+                    ctx.beginPath();
+                    ctx.ellipse(0, -this.currentRadius, this.currentRadius * 0.35, this.currentRadius * 0.8, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                }
+
+                // Center
+                ctx.beginPath();
+                ctx.arc(0, 0, this.currentRadius * 0.4, 0, Math.PI * 2);
+                ctx.fillStyle = this.centerColor;
+                ctx.fill();
+                ctx.lineWidth = 1.5;
+                ctx.strokeStyle = '#d97706';
+                ctx.stroke();
+
+                ctx.restore();
+            }
+        }
+
+        const flowers = [];
+
+        window.addEventListener('click', (e) => {
+            if (e.target.closest('button') || e.target.closest('.glass-card')) {
+                return;
+            }
+            flowers.push(new InteractiveFlower(e.clientX, e.clientY));
+            createSparkles(e.clientX, e.clientY);
+        });
+
+        /* --- SPARKLES EFFECT --- */
+        class Sparkle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 4 + 2;
+                this.speedX = (Math.random() - 0.5) * 4;
+                this.speedY = (Math.random() - 0.5) * 4;
+                this.life = 1;
+                this.decay = Math.random() * 0.03 + 0.015;
+                this.color = ['#fef08a', '#fde047', '#eab308', '#ffffff'][Math.floor(Math.random() * 4)];
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.life -= this.decay;
+            }
+
+            draw(ctx) {
+                ctx.save();
+                ctx.globalAlpha = Math.max(0, this.life);
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        let sparkles = [];
+
+        function createSparkles(x, y, count = 20) {
+            for (let i = 0; i < count; i++) {
+                sparkles.push(new Sparkle(x, y));
+            }
+        }
+
+        /* --- ANIMATION LOOP --- */
+        function animate() {
+            ctxPetals.clearRect(0, 0, width, height);
+            ctxFlowers.clearRect(0, 0, width, height);
+            ctxSparkles.clearRect(0, 0, width, height);
+
+            petals.forEach(p => {
+                p.update();
+                p.draw(ctxPetals);
+            });
+
+            flowers.forEach(f => {
+                f.update();
+                f.draw(ctxFlowers);
+            });
+
+            sparkles.forEach((s, index) => {
+                s.update();
+                s.draw(ctxSparkles);
+                if (s.life <= 0) {
+                    sparkles.splice(index, 1);
+                }
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        setTimeout(() => {
+            flowers.push(new InteractiveFlower(width * 0.15, height * 0.8));
+            flowers.push(new InteractiveFlower(width * 0.85, height * 0.75));
+        }, 500);
+
+        /* --- MODAL CONTROLS --- */
+        const revealBtn = document.getElementById('reveal-btn');
+        const letterModal = document.getElementById('letter-modal');
+        const letterCard = document.getElementById('letter-card');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const centerFlowerBtn = document.getElementById('center-flower-btn');
+        const giftFlowerBtn = document.getElementById('gift-flower-btn');
+
+        function openModal() {
+            letterModal.classList.remove('opacity-0', 'pointer-events-none');
+            letterCard.classList.remove('scale-95');
+            letterCard.classList.add('scale-100');
+            
+            const rect = revealBtn.getBoundingClientRect();
+            createSparkles(rect.left + rect.width / 2, rect.top + rect.height / 2, 40);
+        }
+
+        function closeModal() {
+            letterModal.classList.add('opacity-0', 'pointer-events-none');
+            letterCard.classList.remove('scale-100');
+            letterCard.classList.add('scale-95');
+        }
+
+        revealBtn.addEventListener('click', openModal);
+        closeModalBtn.addEventListener('click', closeModal);
+
+        letterModal.addEventListener('click', (e) => {
+            if (e.target === letterModal) closeModal();
+        });
+
+        centerFlowerBtn.addEventListener('click', () => {
+            const rect = centerFlowerBtn.getBoundingClientRect();
+            createSparkles(rect.left + rect.width / 2, rect.top + rect.height / 2, 30);
+            
+            flowers.push(new InteractiveFlower(
+                rect.left + rect.width / 2 + (Math.random() * 100 - 50),
+                rect.top + rect.height / 2 + (Math.random() * 100 - 50)
+            ));
+        });
+
+        giftFlowerBtn.addEventListener('click', () => {
+            const rx = Math.random() * (width * 0.6) + (width * 0.2);
+            const ry = Math.random() * (height * 0.5) + (height * 0.3);
+            flowers.push(new InteractiveFlower(rx, ry));
+            createSparkles(rx, ry, 35);
+            closeModal();
+        });
+    </script>
+</body>
+</html>
